@@ -9,9 +9,9 @@ class ToDoList extends Component {
     }
 
     componentDidMount() {
-        return axios.get('http://localhost:8080/tasks').then(tasksResponse => {
+        return axios.get('https://jsonplaceholder.typicode.com/todos/').then(tasksResponse => {
             this.setState({
-            tasks: tasksResponse.data
+                tasks: tasksResponse.data
             })
       }).catch(error => {
         console.log(error);
@@ -24,7 +24,7 @@ class ToDoList extends Component {
             tasks
         } = this.state;
         if(newTask) {
-            return axios.post('http://localhost:8080/tasks', {
+            return axios.post('https://jsonplaceholder.typicode.com/todos/', {
                 task: newTask
             }).then(taskResponse => {
                 const newTasksArray = [ ...tasks ];
